@@ -3,6 +3,11 @@ const app = express();// appel du framwork express
 require('./models/dbConfig');
 //appel de la route
 const postsRoutes = require('./routes/postsController');
-app.use('/', postsRoutes);
+const bodyParser = require('body-parser');
+
+
+app.use(bodyParser.json());
+
+app.use('/posts', postsRoutes);
 //conection au serveur
 app.listen(5500,() => console.log('serveur started: 5500'));
